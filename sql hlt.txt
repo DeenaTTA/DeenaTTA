@@ -1,0 +1,19 @@
+create database Games;
+create table Games_detail(
+platform varchar (20) not null,
+Game_name varchar (20) not null,
+Year_created int (20) not null ,
+Age_limit int (20) ,
+IGN_score decimal(5,2),
+Sales_millions int (20),
+primary key (platform)
+);
+insert into Games_detail (platform           ,  Game_name          ,   Year_created   ,   Age_limit   ,   IGN_score   ,   Sales_millions)
+                  values ('PS5'              ,   'Spiderman'        ,   '2020'   ,           '7'       ,    '9.5'   ,          '18'   ),
+                         ('Xbox one'         ,   'Rayman Legends'   ,   '2012'   ,           '3'       ,    '8.5'   ,           '8'   ),
+                         ('Nintendo switch'  ,   'Supersmashbro'    ,   '2018'   ,           '12'      ,    '9.8'   ,          '25'   ),
+                         ('WII'              ,   'Wii sports'       ,   '2008'   ,           '3'       ,    '10'    ,          '35'   ),
+                         ('PS4'              ,   'NIO4'             ,   '2015'   ,           '18'      ,    '8.5'   ,           '5'   );
+
+explain Games_detail;
+select * from Games_detail;
