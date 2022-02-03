@@ -1,0 +1,82 @@
+
+
+
+
+insert into Test(id, title) values(1, "Hello");
+select * from Test;
+-- Your code here!
+
+CREATE DATABASE ordering_system;
+
+USE ordering_system;
+
+CREATE TABLE customers(
+CustomerID INT PRIMARY KEY, 
+CustomerName VARCHAR(100),
+ContactName VARCHAR(100),
+Address VARCHAR(100), 
+City VARCHAR(80),	
+PostalCode VARCHAR(10),
+Country VARCHAR(40)
+);
+
+EXPLAIN customers;
+
+INSERT INTO customers (CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES
+(1, "Frankie Holder", "James", "Jammy Dogdger Avenue", "Scranton", "12209", "UK"),
+(2, "Lisa Chapman", "James", "Custard Cream Boulevard", "Pawnee", "05021", "UK"),
+(3, "Derik lard", "James", "Wagon Wheel Place", "Scranton", "122541", "UK"),
+(4, "Donna Niel", "James", "Leibniz Lane", "Pawnee", "05020", "UK"),
+(5, "Arav sweet", "James", "Digestive Road", "Pawnee", "01756", "UK"),
+(6, "Stanley cooper", "James", "Hobnob Street", "Scranton","122554", "UK")
+;
+
+
+CREATE TABLE carorders(
+OrderID INT NOT NULL PRIMARY KEY,
+CustomerID INT, 
+ItemID INT NOT NULL,
+CarName VARCHAR(80),
+CarPrice INT NOT NULL
+);
+
+EXPLAIN carorders;
+
+INSERT INTO carorders (CustomerID, OrderID, ItemID, CarName, CarPrice)
+VALUES
+(6, 5021545, 32174524,  "BMW",  60000),
+(3, 5021546, 45142548, "Tesla", 80000),
+(3, 5021547, 87413547, "Audi", 50000),
+(1, 5021548, 24586596, "Lotus", 150000),
+(4, 5021549, 47512543, "Ferrari", 410000),
+(5, 5021550, 73519487, "Lamborghini", 450000)
+;
+
+SELECT * FROM carorders;
+UPDATE carorders
+SET CarPrice = 600000
+WHERE OrderID = 5021550;
+
+SELECT * FROM carorders;
+
+SELECT customers.CustomerName , carorders.OrderID
+FROM customers
+INNER JOIN carorders
+ON customers.CustomerID = carorders.CustomerID;
+SELECT * FROM customers
+INNER JOIN carorders
+WHERE customers.CustomerID = carorders.CustomerID AND carorders.CarName = "Tesla";
+
+-- select using comparison operators
+SELECT * FROM carorders
+WHERE CarPrice between 150000 and 50000;
+
+-- Update customer name 
+UPDATE customers
+SET CustomerName = 'Stanley Cooper'
+WHERE CustomerId = 4;
+
+SELECT * FROM customers;
+
+
