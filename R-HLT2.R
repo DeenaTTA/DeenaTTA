@@ -4,3 +4,4 @@ Role<-c(DataAnalyst,SrTechinician,JrDeveloper,Team Leader,DataScientist)
 LengthofService<-c(15,10,5,20,12)
 df<-data.frame(Name,Age,Role,LengthofService)
 print(df)
+
